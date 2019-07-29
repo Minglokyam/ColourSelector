@@ -43,6 +43,7 @@ public class DisplayImageActivity extends AppCompatActivity implements View.OnCl
         }
 
         Button button2 = (Button) findViewById(R.id.button2);
+        Button button5 = (Button) findViewById(R.id.button5);
         textView = (TextView) findViewById(R.id.textView);
 
         imageView.setOnTouchListener(new View.OnTouchListener() {
@@ -62,16 +63,29 @@ public class DisplayImageActivity extends AppCompatActivity implements View.OnCl
         });
 
         button2.setOnClickListener(this);
+        button5.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
-        imageView.buildDrawingCache();
-        Bitmap bmapPixel = imageView.getDrawingCache();
-        int pixel = bmapPixel.getPixel(coordinates[0], coordinates[1]);
-        int redValue = Color.red(pixel);
-        int blueValue = Color.blue(pixel);
-        int greenValue = Color.green(pixel);
-        textView.setText("x = " + coordinates[0] + "\ny = " + coordinates[1] + "\nRed = " + redValue + "\nBlue = " + blueValue + "\nGreen = " + greenValue);
+        switch(v.getId()){
+            case R.id.button2:
+                imageView.buildDrawingCache();
+                Bitmap bmapPixel = imageView.getDrawingCache();
+                int pixel = bmapPixel.getPixel(coordinates[0], coordinates[1]);
+                int redValue = Color.red(pixel);
+                int blueValue = Color.blue(pixel);
+                int greenValue = Color.green(pixel);
+                textView.setText("x = " + coordinates[0] + "\ny = " + coordinates[1] + "\nRed = " + redValue + "\nBlue = " + blueValue + "\nGreen = " + greenValue);
+                break;
+
+            case R.id.button5:
+                finish();
+                break;
+
+            default:
+                break;
+        }
+
     }
 }

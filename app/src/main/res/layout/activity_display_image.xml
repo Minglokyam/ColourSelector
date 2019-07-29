@@ -25,8 +25,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="264dp"
-        android:layout_height="121dp"
+        android:layout_width="263dp"
+        android:layout_height="170dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
@@ -35,13 +35,24 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="123dp"
-        android:layout_height="126dp"
+        android:layout_width="127dp"
+        android:layout_height="51dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/show_data"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="127dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

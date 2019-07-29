@@ -3,7 +3,8 @@
     <string name="url">Load image from url</string>
     <string name="enter_url">Enter URL</string>
     <string name="image">Image</string>
-    <string name="show_data">Show data</string>
+    <string name="show_data">Show RGB</string>
+    <string name="back">Back</string>
     <string name="image_gallery">Image Gallery</string>
     <string name="camera">CAMERA</string>
 </resources>
