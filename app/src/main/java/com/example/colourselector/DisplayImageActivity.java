@@ -13,9 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 
-public class DisplayImageActivity extends AppCompatActivity implements View.OnClickListener{
+public class DisplayImageActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView imageView;
     TextView textView;
@@ -29,15 +30,13 @@ public class DisplayImageActivity extends AppCompatActivity implements View.OnCl
 
         Intent intent = getIntent();
         imageView = (ImageView) findViewById(R.id.imageView);
-        if(intent.hasExtra(MainActivity.EXTRA_URL)){
+        if (intent.hasExtra(MainActivity.EXTRA_URL)) {
             String url = intent.getStringExtra(MainActivity.EXTRA_URL);
             Glide.with(this).load(url).into(imageView);
-        }
-        else if(intent.hasExtra(MainActivity.EXTRA_BMAP)){
+        } else if (intent.hasExtra(MainActivity.EXTRA_BMAP)) {
             Bitmap newBmap = BitmapFactory.decodeByteArray(intent.getByteArrayExtra(MainActivity.EXTRA_BMAP), 0, intent.getByteArrayExtra(MainActivity.EXTRA_BMAP).length);
             imageView.setImageBitmap(newBmap);
-        }
-        else{
+        } else {
             Bitmap newCameraPicture = BitmapFactory.decodeByteArray(intent.getByteArrayExtra(MainActivity.EXTRA_CAMERAPICTURE), 0, intent.getByteArrayExtra(MainActivity.EXTRA_CAMERAPICTURE).length);
             imageView.setImageBitmap(newCameraPicture);
         }
@@ -67,8 +66,8 @@ public class DisplayImageActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
-    public void onClick(View v){
-        switch(v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.button2:
                 imageView.buildDrawingCache();
                 Bitmap bmapPixel = imageView.getDrawingCache();

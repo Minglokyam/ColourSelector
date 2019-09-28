@@ -9,10 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_BMAP = "com.example.colourselector.BMAP";
     public static final String EXTRA_CAMERAPICTURE = "com.example.colourselector.CAMERAPICTURE";
     public static final String EXTRA_URL = "com.example.colourselector.URL";
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText editText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = (Button) findViewById(R.id.button);
@@ -38,11 +39,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button3:
-               photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-               photoPickerIntent.addCategory(Intent.CATEGORY_OPENABLE);
-               photoPickerIntent.setType("image/*");
-               startActivityForResult(photoPickerIntent, OPEN_DOCUMENT_CODE);
-               break;
+                photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                photoPickerIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, OPEN_DOCUMENT_CODE);
+                break;
 
             case R.id.button:
                 urlIntent = new Intent(this, DisplayImageActivity.class);
@@ -66,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == OPEN_DOCUMENT_CODE && resultCode == RESULT_OK){
-            if(data != null) {
+        if (requestCode == OPEN_DOCUMENT_CODE && resultCode == RESULT_OK) {
+            if (data != null) {
                 try {
                     bmapIntent = new Intent(this, DisplayImageActivity.class);
                     Uri imageUri = data.getData();
@@ -76,15 +77,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     bmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
                     bmapIntent.putExtra(EXTRA_BMAP, bs.toByteArray());
                     startActivity(bmapIntent);
-                }
-                catch(IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
 
-        if(requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK){
-            if(data != null) {
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+            if (data != null) {
                 cameraPictureIntent = new Intent(this, DisplayImageActivity.class);
                 Bundle extras = data.getExtras();
                 Bitmap cameraPicture = (Bitmap) extras.get("data");
